@@ -1,0 +1,80 @@
+<app-employee-header />
+
+<div class="table">
+  <div class="table-content">
+    <h1>My Manager Details</h1>
+
+    <div *ngIf="myManagerDetail.length === 0">
+      <hr />
+      <p
+        style="
+          text-align: center;
+          color: red;
+          font-size: 25px;
+          margin-top: 20px;
+        "
+      >
+        You have no manager assigned
+      </p>
+    </div>
+
+    <table
+      *ngIf="myManagerDetail.length > 0"
+      mat-table
+      [dataSource]="myManagerDetail"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          {{ i + 1 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fname">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.firstName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lname">
+        <th mat-header-cell *matHeaderCellDef>Last Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.lastName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.gender }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.role }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="joined">
+        <th mat-header-cell *matHeaderCellDef>Joined Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.managerDetail.createdAt | date : "dd MMMM YYYY" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

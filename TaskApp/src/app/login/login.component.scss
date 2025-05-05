@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  align-items: center;
+  // background-image: linear-gradient(45deg, rgb(1, 202, 125), rgb(3, 29, 99));
+  background-image: url(../../assets/images/mountain.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+  width: 30rem;
+  height: 550px;
+  padding: 40px;
+  justify-content: center;
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px black;
+  background-color: white;
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .link {
+    text-align: center;
+    margin-top: 10px;
+    strong {
+      color: blue;
+      cursor: pointer;
+    }
+  }
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+
+  span {
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+.img {
+  border-radius: 30px;
+}
+@media screen and (max-width: 520px) {
+  .form {
+    transform: scale(0.8);
+  }
+}

@@ -1,0 +1,66 @@
+<div class="container">
+  <form class="form" [formGroup]="loginFormValues">
+    <h1>Login Here</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email id</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="Ex. example@domain.com"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="loginFormValues.hasError('required', 'email')"
+        >Email is <strong>required</strong></mat-error
+      >
+
+      <mat-error *ngIf="loginFormValues.hasError('email', 'email')"
+        >Email is <strong>Invalid</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="loginFormValues.hasError('required', 'password')"
+        >Password is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <button
+      [disabled]="loginFormValues.invalid"
+      (click)="login()"
+      mat-raised-button
+      matTooltip="Fill all the fields"
+      color="primary"
+    >
+      Login
+    </button>
+
+    <div class="forgot-password">
+      <p>
+        forgot password?
+        <span routerLink="/auth/forgot-password">Click here</span>
+      </p>
+    </div>
+
+    <span class="link"
+      >Don't Have an Account?
+      <strong routerLink="/auth/register">Click Here</strong></span
+    >
+  </form>
+</div>

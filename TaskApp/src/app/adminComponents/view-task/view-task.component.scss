@@ -1,0 +1,61 @@
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .table-content {
+    width: 1100px;
+  }
+}
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.table-example {
+  height: 700px;
+  overflow: auto;
+}
+
+.highlight-row {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+
+.delete-row {
+  background-color: rgb(97, 10, 10);
+  color: white;
+  text-decoration: line-through;
+}
+
+.table-example {
+  height: 700px;
+  overflow: auto;
+}
+
+.header {
+  background-color: black;
+  color: white;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .search {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .table {
+    transform: scale(0.85);
+  }
+}

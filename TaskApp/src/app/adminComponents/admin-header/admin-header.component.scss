@@ -1,0 +1,68 @@
+.navbar {
+  width: 100%;
+  height: 8vh;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  box-shadow: 5px 5px 15px grey;
+  .title {
+    margin-left: 30px;
+    width: 30%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-top: auto;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 12px;
+    }
+
+    h1:hover {
+      cursor: pointer;
+    }
+  }
+
+  .links {
+    display: flex;
+    width: 70%;
+    justify-content: flex-end;
+    margin-right: 30px;
+    gap: 10px;
+
+    .btn {
+      font-size: 18px;
+    }
+
+    .btn:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .sandwich {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .navbar .title h1 {
+    font-size: 18px;
+  }
+  .navbar .title img {
+    transform: scale(0.7);
+  }
+  .navbar .links {
+    display: none;
+  }
+  .navbar .title {
+    width: 100%;
+  }
+  .navbar .sandwich {
+    display: flex;
+    margin-right: 30px;
+    font-size: 28px;
+    cursor: pointer;
+  }
+}

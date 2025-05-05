@@ -1,0 +1,79 @@
+<app-manager-header />
+
+<div class="background">
+  <div class="container">
+    <form class="form" [formGroup]="taskFormValues">
+      <h1>{{ isUpdate ? "Update task" : "Create Task" }}</h1>
+
+      <mat-form-field appearance="fill" *ngIf="false">
+        <mat-label>Task id</mat-label>
+        <input formControlName="taskId" matInput placeholder="Ex. Ta34" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter Task Name</mat-label>
+        <input formControlName="name" matInput placeholder="Ex. Ta34" />
+        <mat-icon matSuffix>assignment</mat-icon>
+
+        <mat-error *ngIf="taskFormValues.hasError('required', 'name')"
+          >Task Name is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!isUpdate">
+        <mat-label>Select Employee</mat-label>
+        <mat-select formControlName="employeeId">
+          <mat-option *ngIf="teamList.length <= 1; else available"
+            >No Employees assigned</mat-option
+          >
+          <ng-template #available>
+            <mat-option *ngFor="let list of teamList" [value]="list._id">{{
+              list.firstName + " " + list.lastName
+            }}</mat-option>
+          </ng-template>
+        </mat-select>
+
+        <mat-error *ngIf="taskFormValues.hasError('required', 'employeeId')"
+          >Select Employee is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Choose a due date</mat-label>
+        <input
+          formControlName="dueDate"
+          [min]="minDate"
+          matInput
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error *ngIf="taskFormValues.hasError('required', 'dueDate')"
+          >Due Date is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Task Description</mat-label>
+        <textarea formControlName="description" rows="5" matInput></textarea>
+
+        <mat-error *ngIf="taskFormValues.hasError('required', 'description')"
+          >Task Description is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+
+      <button
+        [disabled]="taskFormValues.invalid"
+        (click)="assignTask()"
+        mat-raised-button
+        color="primary"
+      >
+        {{ isUpdate ? "Update Task" : "Assign Task" }}
+      </button>
+    </form>
+  </div>
+</div>

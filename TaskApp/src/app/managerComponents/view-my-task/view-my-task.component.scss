@@ -1,0 +1,49 @@
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .table-content {
+    width: 1300px;
+  }
+}
+.highlight-row {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+
+.request-row {
+  background-color: rgb(240, 207, 137); /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.request {
+  color: rgb(253, 175, 6);
+  font-weight: bold;
+}
+
+.table-example {
+  height: 700px;
+  overflow: auto;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .search {
+    width: 300px;
+  }
+}

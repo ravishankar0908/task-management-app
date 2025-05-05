@@ -1,0 +1,106 @@
+<div class="container">
+  <form class="form" [formGroup]="registerFormValues">
+    <h1>Register Here</h1>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your First Name</mat-label>
+      <input formControlName="firstName" matInput placeholder="Ex. John" />
+      <mat-icon matSuffix>person</mat-icon>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'fname')"
+        >First Name is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your Last Name</mat-label>
+      <input formControlName="lastName" matInput placeholder="Ex. Chris" />
+      <mat-icon matSuffix>person_outline</mat-icon>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'lname')"
+        >Last Name is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choose Your Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="others">Others</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'gender')"
+        >Gender is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <!-- <mat-form-field>
+      <mat-label>Select Your Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="employee">Employee</mat-option>
+        <mat-option value="manager">Manager</mat-option>
+        <mat-option value="admin">Admin</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'role')"
+        >Role is <strong>required</strong></mat-error
+      >
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email id</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="Ex. example@domain.com"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'email')"
+        >Email is <strong>required</strong></mat-error
+      >
+
+      <mat-error *ngIf="registerFormValues.hasError('email', 'email')"
+        >Email is <strong>Invalid</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+
+      <mat-error *ngIf="registerFormValues.hasError('required', 'password')"
+        >pasword is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <button
+      (click)="Register()"
+      [disabled]="registerFormValues.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Register
+    </button>
+
+    <span class="link"
+      >Already Have an Account?
+      <strong routerLink="/auth/login">Click Here</strong></span
+    >
+  </form>
+</div>

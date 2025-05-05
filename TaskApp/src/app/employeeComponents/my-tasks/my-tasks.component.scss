@@ -1,0 +1,33 @@
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .table-content {
+    width: 1000px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+.highlight-row {
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+}
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+.request {
+  color: rgb(253, 175, 6);
+  font-weight: bold;
+}

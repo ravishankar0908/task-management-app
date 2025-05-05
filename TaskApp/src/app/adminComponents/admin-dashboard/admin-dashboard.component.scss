@@ -1,0 +1,62 @@
+.main {
+  display: flex;
+  height: 92vh;
+  background-image: url(../../../assets/images/adminDashboard.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  color: white;
+
+  .username {
+    margin-top: 30px;
+    h1 {
+      font-size: 40px;
+      overflow: hidden;
+      border-right: 2px solid orange;
+      white-space: nowrap;
+      margin: 0 auto;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    /* The typewriter cursor effect */
+    @keyframes blink-caret {
+      from,
+      to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: orange;
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    height: 52vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+  }
+  .title {
+    h1 {
+      font-size: 50px;
+    }
+  }
+  .description {
+    margin-top: 30px;
+    p {
+      margin-top: 30px;
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+}

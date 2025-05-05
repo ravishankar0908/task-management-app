@@ -1,0 +1,40 @@
+<h1 style="text-align: center" mat-dialog-title>{{ data.formTitle }}</h1>
+
+<div mat-dialog-content>
+  <form class="content" [formGroup]="submitTaskForm">
+    <mat-form-field class="field" *ngIf="false">
+      <input matInput formControlName="taskId" [value]="data.taskId" />
+    </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Select the status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="completed">Completed</mat-option>
+        <mat-option value="needtime">Need time</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="submitTaskForm.hasError('required', 'status')"
+        >status is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Message</mat-label>
+      <textarea formControlName="message" matInput rows="5"></textarea>
+
+      <mat-error *ngIf="submitTaskForm.hasError('required', 'message')"
+        >message is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions style="display: flex; justify-content: center">
+  <button
+    [disabled]="submitTaskForm.invalid"
+    (click)="submitTask()"
+    mat-raised-button
+    color="primary"
+  >
+    Submit
+  </button>
+  <button mat-dialog-close mat-raised-button color="warn">Cancel</button>
+</div>

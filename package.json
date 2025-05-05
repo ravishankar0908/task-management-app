@@ -1,0 +1,11 @@
+{
+  "name": "angular-application",
+  "scripts": {
+    "start": "concurrently \" npm run start:angular\" \" npm run start:express\"",
+    "start:angular": "cd TaskApp && npm start",
+    "start:express": "cd Api && node index.js"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

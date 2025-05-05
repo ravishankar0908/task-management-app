@@ -1,0 +1,153 @@
+<app-employee-header />
+
+<div class="table">
+  <div class="table-content">
+    <div class="title">
+      <h1>My Team Members Details</h1>
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput #input (keyup)="applyFilter($event)" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="myTask.length === 0">
+      <hr />
+      <p
+        style="
+          color: red;
+          font-size: 25px;
+          text-align: center;
+          margin-top: 20px;
+        "
+      >
+        No task assigned to you right now.
+      </p>
+    </div>
+
+    <table
+      *ngIf="myTask.length > 0"
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          {{ i + paginator.pageIndex * paginator.pageSize + 1 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngStyle]="{ 'white-space': 'pre-wrap' }"
+        >
+          {{ element.description }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createat">
+        <th mat-header-cell *matHeaderCellDef>Task Created At</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.createdAt | date : "dd MMMM YYYY" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duedate">
+        <th mat-header-cell *matHeaderCellDef>Due Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dueDate | date : "dd MMMM YYYY" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [ngClass]="getStatusClass(element.status)"
+        >
+          {{ element.status }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            [disabled]="element.status === 'completed'"
+            (click)="completeTask(element._id)"
+            *ngIf="
+              !isPastDue(element.dueDate) &&
+                element.status !== 'completed' &&
+                element.status !== 'needtime';
+              else completed
+            "
+            mat-icon-button
+            matTooltip="Click to complete task"
+          >
+            <mat-icon style="color: green">send</mat-icon>
+          </button>
+          <ng-template #completed>
+            <mat-icon
+              matTooltip="You have submitted the task"
+              style="color: green"
+              >thumb_up</mat-icon
+            >
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="approved">
+        <th mat-header-cell *matHeaderCellDef>Approved by manager</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon
+            matTooltip="approval is pending"
+            *ngIf="!element.isManagerApproved; else approved"
+            style="color: red"
+            >close</mat-icon
+          >
+        </td>
+        <ng-template #approved>
+          <mat-icon
+            matTooltip="manager is approved the task"
+            style="color: green"
+            >check</mat-icon
+          >
+        </ng-template>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        [ngClass]="{ 'highlight-row': isPastDue(row.dueDate) }"
+      ></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td
+          class="mat-cell"
+          colspan="10"
+          style="
+            text-align: center;
+            color: red;
+            font-size: 20px;
+            margin-top: 10px;
+            padding: 20px;
+          "
+        >
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+  </div>
+</div>

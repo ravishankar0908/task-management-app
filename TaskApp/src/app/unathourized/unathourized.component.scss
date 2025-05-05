@@ -1,0 +1,27 @@
+.container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  border: 2px solid black;
+  padding: 40px;
+  font-size: large;
+  box-shadow: 5px 5px 15px grey;
+  transform: scale(1.5);
+  .title {
+    height: 20vh;
+    h1 {
+      font-size: 50px;
+      span {
+        color: red;
+      }
+    }
+    p {
+      font-size: medium;
+      margin-top: 40px;
+    }
+  }
+}

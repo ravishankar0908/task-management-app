@@ -1,0 +1,24 @@
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .table-content {
+    width: 1000px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+.table-example {
+  height: 700px;
+  overflow: auto;
+}
+.header {
+  background-color: black;
+  color: white;
+}

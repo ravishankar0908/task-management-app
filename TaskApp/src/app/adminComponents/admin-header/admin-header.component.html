@@ -1,0 +1,61 @@
+<nav class="navbar">
+  <div class="title">
+    <img src="../../../assets/images/adminLogo.png" alt="" />
+    <h1 routerLink="/admin">Admin Dashboard</h1>
+  </div>
+
+  <div class="sandwich">
+    <i (click)="open()" class="ph ph-list"></i>
+  </div>
+
+  <div class="links">
+    <button mat-button [matMenuTriggerFor]="analytics">
+      Analytics <i class="ph ph-caret-down"></i>
+    </button>
+
+    <mat-menu #analytics>
+      <button routerLink="/admin/charts" class="btn" mat-menu-item>
+        Charts
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="view">
+      Users <i class="ph ph-caret-down"></i>
+    </button>
+
+    <mat-menu #view="matMenu">
+      <button routerLink="/admin/assign-team" class="btn" mat-menu-item>
+        Assign Team
+      </button>
+      <button routerLink="/admin/managers" class="btn" mat-menu-item>
+        View Managers
+      </button>
+      <button routerLink="/admin/employees" class="btn" mat-menu-item>
+        View Employees
+      </button>
+      <button routerLink="/admin/deleted-lists" class="btn" mat-menu-item>
+        View Deleted Users
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="task">
+      Tasks <i class="ph ph-caret-down"></i>
+    </button>
+    <mat-menu #task="matMenu">
+      <button routerLink="/admin/tasks" class="btn" mat-menu-item color="basic">
+        View Tasks
+      </button>
+    </mat-menu>
+
+    <button mat-button color="white" [matMenuTriggerFor]="profile">
+      <i class="ph ph-user"></i> {{ userName }} <i class="ph ph-caret-down"></i>
+    </button>
+
+    <mat-menu #profile>
+      <button mat-menu-item routerLink="/change-password">
+        Change Password
+      </button>
+      <button (click)="logout()" mat-menu-item>Logout</button>
+    </mat-menu>
+  </div>
+</nav>

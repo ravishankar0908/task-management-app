@@ -1,0 +1,55 @@
+<app-admin-header />
+
+<div class="container">
+  <div class="form" [formGroup]="assignTeam">
+    <h1>Assign Team Members</h1>
+    <mat-form-field>
+      <mat-label>Select Manager</mat-label>
+      <mat-select formControlName="manager">
+        <mat-option *ngIf="managerList.length === 0; else managerAvailable"
+          >No Manager is available</mat-option
+        >
+        <ng-template #managerAvailable>
+          <mat-option
+            *ngFor="let managerlist of managerList"
+            [value]="managerlist._id"
+            >{{
+              managerlist.firstName + " " + managerlist.lastName
+            }}</mat-option
+          >
+        </ng-template>
+      </mat-select>
+      <mat-error *ngIf="assignTeam.hasError('required', 'manager')"
+        >Choose <strong>Manager</strong></mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select Employee</mat-label>
+      <mat-select formControlName="employee">
+        <mat-option *ngIf="employeeList.length === 0; else employeeAvailable"
+          >No employee is available</mat-option
+        >
+        <ng-template #employeeAvailable>
+          <mat-option
+            *ngFor="let employeelist of employeeList"
+            [value]="employeelist._id"
+            >{{
+              employeelist.firstName + " " + employeelist.lastName
+            }}</mat-option
+          >
+        </ng-template>
+      </mat-select>
+      <mat-error *ngIf="assignTeam.hasError('required', 'employee')"
+        >Choose <strong>Employee</strong></mat-error
+      >
+    </mat-form-field>
+    <button
+      (click)="assignTeamMember()"
+      [disabled]="assignTeam.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Assign
+    </button>
+  </div>
+</div>

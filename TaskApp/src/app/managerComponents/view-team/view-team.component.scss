@@ -1,0 +1,16 @@
+.table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  .table-content {
+    width: 1000px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

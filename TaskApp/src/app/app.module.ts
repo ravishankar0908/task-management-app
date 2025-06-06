@@ -15,7 +15,10 @@ import { ViewTeamComponent } from './managerComponents/view-team/view-team.compo
 import { ViewTaskComponent } from './adminComponents/view-task/view-task.component';
 import { ViewManagersComponent } from './adminComponents/view-managers/view-managers.component';
 import { ViewTeamMembersComponent } from './adminComponents/view-team-members/view-team-members.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -109,8 +112,12 @@ import { AuthInterceptor } from './services/auth.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
   ],
   bootstrap: [AppComponent],
 })

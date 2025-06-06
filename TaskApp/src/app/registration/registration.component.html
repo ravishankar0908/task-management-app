@@ -2,22 +2,22 @@
   <form class="form" [formGroup]="registerFormValues">
     <h1>Register Here</h1>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Enter your First Name</mat-label>
       <input formControlName="firstName" matInput placeholder="Ex. John" />
       <mat-icon matSuffix>person</mat-icon>
 
-      <mat-error *ngIf="registerFormValues.hasError('required', 'fname')"
+      <mat-error *ngIf="registerFormValues.hasError('required', 'firstName')"
         >First Name is <strong>required</strong></mat-error
       >
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Enter your Last Name</mat-label>
       <input formControlName="lastName" matInput placeholder="Ex. Chris" />
       <mat-icon matSuffix>person_outline</mat-icon>
 
-      <mat-error *ngIf="registerFormValues.hasError('required', 'lname')"
+      <mat-error *ngIf="registerFormValues.hasError('required', 'lastName')"
         >Last Name is <strong>required</strong></mat-error
       >
     </mat-form-field>
@@ -48,7 +48,7 @@
       >
     </mat-form-field> -->
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Enter your email id</mat-label>
       <input
         formControlName="email"

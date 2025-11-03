@@ -1,5 +1,4 @@
 <app-manager-header />
-
 <div class="background">
   <div class="container">
     <form class="form" [formGroup]="taskFormValues">
@@ -23,7 +22,7 @@
       <mat-form-field *ngIf="!isUpdate">
         <mat-label>Select Employee</mat-label>
         <mat-select formControlName="employeeId">
-          <mat-option *ngIf="teamList.length <= 1; else available"
+          <mat-option *ngIf="teamList.length < 1; else available"
             >No Employees assigned</mat-option
           >
           <ng-template #available>
